@@ -9,8 +9,8 @@ import {Image,Center, Spacer,Container,Box,Text,HStack,VStack,UnorderedList,List
 
 const Footer = () => {
   return (
-    <div style={{backgroundColor:"black", color:"white"}} >
-        <Container  maxW="1340px" pb={"50"}>
+    <footer style={{backgroundColor:"black", color:"white"}} >
+        <Container  maxW="1340px" pb={"50"}  as="footer" w="100%" mt={"10vh"}>
             <Center pt={"20"} display="block">
                 <VStack>
                    <Box >
@@ -87,9 +87,9 @@ const Footer = () => {
                 <Spacer/>
                 <Box>
                    <HStack cursor={"pointer"}> <Text>Copyright © FFF Corporation 2022 All Rights Reserved</Text> <Spacer />
-                    <Text><i class="fa-brands fa-square-instagram"></i></Text><Spacer />
-                    <Text> <i class="fa-brands fa-facebook"></i></Text><Spacer />
-                    <Text><i class="fa-brands fa-twitter"></i></Text></HStack><Spacer />
+                    <Text><i className="fa-brands fa-square-instagram"></i></Text><Spacer />
+                    <Text> <i className="fa-brands fa-facebook"></i></Text><Spacer />
+                    <Text><i className="fa-brands fa-twitter"></i></Text></HStack><Spacer />
                 </Box>
             </Box>
           </Container>
@@ -97,7 +97,7 @@ const Footer = () => {
         </Container>
 
 
-    </div>
+    </footer>
   )
 }
 

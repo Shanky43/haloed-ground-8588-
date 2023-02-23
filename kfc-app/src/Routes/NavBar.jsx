@@ -10,7 +10,7 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Container,
-  Flex,Button,Box,Spacer,Image,Center,Avatar,Wrap,WrapItem,Text
+  Flex,Button,Box,Spacer,Image,Center,Avatar,Wrap,WrapItem,Text, position
 
 
 } from '@chakra-ui/react'
@@ -25,15 +25,14 @@ const links =[
  ]
 
 const NavBar = () => {
- 
 
   return (
-<div>
-<Container  maxW='1240px' p="30px"> 
+<div  style={{position:"relative", zIndex:"2"}} >
+  
+<Container  maxW='1400px' p="30px 30px 0px 30px" as="header" top={"0px"} position="fixed" w="100%" bg={"white" }> 
 
-<Flex 
-pos="sticky"
-h="50px"  
+<Flex  
+// h="80px"  
 
 >
     <Box> 
@@ -73,8 +72,9 @@ h="50px"
 </WrapItem>
 </Wrap>
 </Flex>
+<Box mt={"1%"}><Text  bg="black" color="white" size="sm" p="2" m="0% -3% 0px -3%" textAlign={"center"}> <i className ="fa-solid fa-location-dot" style={{color:"red"}}> </i>  &nbsp;Start an Order for Pickup or Delivery</Text></Box>
 </Container>
-<Center bg="black" color="white" p="2"><Text size="sm"> <i className ="fa-solid fa-location-dot" style={{color:"red"}}> </i>  &nbsp;Start an Order for Pickup or Delivery</Text></Center>
+
 
 </div>
 

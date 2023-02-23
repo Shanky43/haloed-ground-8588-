@@ -71,7 +71,7 @@ const speacialOffers=[
 const HomePage = () => {
 
   return (
-    <div>
+    <div style={{paddingTop:"15vh"}}>
       <Center>
        <Swiper
         spaceBetween={30}
@@ -122,7 +122,7 @@ const HomePage = () => {
             <Image src={items.image} alt={items.quantity} w="250px"  _hover={{transform:"scale(1.1)"}}/>
             <Text >{items.quantity}</Text>
             <Text>{items.calories}</Text>
-           <Flex> <Text style={{display:"flex"}}>{items.setloc} <Models/></Text></Flex>
+           <Flex> <Text style={{display:"flex"}}>{items.setloc}&nbsp;<Models/></Text></Flex>
           </Box>
         ))
       }

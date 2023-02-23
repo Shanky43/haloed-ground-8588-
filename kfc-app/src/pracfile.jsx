@@ -1,4 +1,4 @@
-<Box>
+{/* <Box>
 <HeroSlider
 slidingAnimation="left_to_right"
 orientation="horizontal"
@@ -26,4 +26,64 @@ settings={{
 
   
 </HeroSlider>
-</Box>
+</Box> */}
+
+
+// const [state, dispatch]=useReducer(reducer,initialState)
+
+
+// const initialState={
+//   // Buckets:"",
+  // Sandwiches:"",
+  // Tenders:"",
+  // FriedChicken:"",
+  // PotPiesBowls:"",
+  // ALaCarte:"",
+  // Sides:"",
+  // Sauces:"",
+  // Desserts:"",
+  // SpecialOffers:"",
+  // Beverages:""
+  // }
+  
+  // const reducer=((state,{type,payload}))=>{
+  //   switch(type){
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  //     case "Buckets":{
+  //       return {
+  //         ...state,
+  //         Buckets:payload
+  //       }
+  //     }
+  
+  //   }
+  // }
