@@ -1,40 +1,35 @@
-import {React,useState,useEffect} from 'react'
+import {React,useState,useEffect, useRef} from 'react'
 import {Image,Center, Spacer,Container,Box,Text,Flex,HStack,VStack,UnorderedList,ListItem,
-  Heading,Divider,Link,Grid,useDisclosure,Modal,ModalContent,ModalHeader,ModalOverlay,ModalCloseButton,
+  Heading,Divider,Grid,useDisclosure,Modal,ModalContent,ModalHeader,ModalOverlay,ModalCloseButton,
   ModalBody,ModalFooter,Button,
   VisuallyHidden} from "@chakra-ui/react"
+  import { HashLink as Link } from 'react-router-hash-link';
 
 import Footer from "./Footer"
 import axios from "axios"
+import Models from './Models';
 
-function Models() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
- return ( <Box>
-<Text onClick={onOpen}><i className="fa-solid fa-circle-info"></i></Text>
 
-<Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-  <ModalOverlay />
-  <ModalContent>
-    <ModalHeader>Modal Title</ModalHeader>
-    <ModalCloseButton />
-    <ModalBody>
-      <Text fontWeight='bold' mb='1rem'>
-        You can scroll the content behind the modal
-      </Text>
-      {/* <Lorem count={2} /> */}
-    </ModalBody>
-
-    <ModalFooter>
-      <Button colorScheme='blue' mr={3} onClick={onClose}>
-        Close
-      </Button>
-      <Button variant='ghost'>Secondary Action</Button>
-    </ModalFooter>
-  </ModalContent>
-</Modal>
-</Box>)
+const DisplayOnUI=({title,item,ref,id })=>{
+  return (
+    <Box id={id} >
+    <Heading mb="16vh" mt={"10vh"} ref={ref} >{title}</Heading>
+   <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+   {
+      item.map((items,i)=>(
+        
+    <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
+      <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
+      <Text>quantity : {items.title}</Text>
+      <Text>price {items.price}</Text>
+      <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
+    </Box>
+      ))
+    }
+        </Grid>
+   </Box>
+  )
 }
-
 
 const Menu = () => {
 const [buckets,setBuckets]=useState([])
@@ -48,6 +43,10 @@ const [sauces,setSauces]=useState([])
 const [deserts,setDeserts]=useState([])
 const [special,setSpecial]=useState([])
 const [beverages,setBeverages]=useState([])
+
+
+
+
 
 const fetchAndRenderData=()=>{
   axios.get(`https://dummu-api-datas.onrender.com/kfcItems`)
@@ -73,17 +72,17 @@ useEffect(() => {
 }, [])
 
 const sections =[
-  {path:"/",title:"Buckets"},
-  {path:"/",title:"Sandwiches"},
-  {path:"/",title:"Tenders"},
-  {path:"/",title:"Fried Chicken"},
-  {path:"/",title:"Pot Pies & Bowls"},
-  {path:"/",title:"A La Carte"},
-  {path:"/",title:"Sides"},
-  {path:"/",title:"Sauces"},
-  {path:"/",title:"Desserts"},
-  {path:"/",title:"Special Offers"},
-  {path:"/",title:"Beverages"}
+  {path:`#Bucketss`,title:"Buckets"},
+  {path:`#Sandwichess`,title:"Sandwiches"},
+  {path:`#Tenderss`,title:"Tenders"},
+  {path:`#FriedChickens`,title:"Fried Chicken"},
+  {path:`#Potss`,title:"Pot Pies & Bowls"},
+  {path:`#Cartes`,title:"A La Carte"},
+  {path:`#Sidess`,title:"Sides"},
+  {path:`#Saucess`,title:"Sauces"},
+  {path:`#Desertss`,title:"Desserts"},
+  {path:`#Specials`,title:"Special Offers"},
+  {path:`#Beveragess`,title:"Beverages"}
 ]
 
 
@@ -103,14 +102,16 @@ const sections =[
           justifyContent="space-between"
           marginTop={"8vh"}>
            <Box>
-         <Box mb={"2"}>  <Heading> FFF®  MENU</Heading></Box>
+         <Box mb={"2"} position={"relative"}>  <Heading pos={"-webkit-sticky"}>  FFF®  MENU</Heading></Box>
            <Divider mb={"6vh"}/>
           <Box lineHeight="2">
           <UnorderedList style={{listStyle:"none", fontSize:"20px"}} > 
             
             {
               sections.map(({path,title})=>(
-                <ListItem _hover={{transform:"scale(1.04)",fontWeight:"450"}} key={path}><Link to={path}>{title}</Link></ListItem>
+                // console.log("line 134",path),
+                <ListItem _hover={{transform:"scale(1.04)",fontWeight:"450",cursor:"pointer"}} key={path}>
+                  <Link to={path}   scroll={(el) => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{title}</Link></ListItem>
               ))
             }
             </UnorderedList>
@@ -132,197 +133,18 @@ const sections =[
           mt="10vh"
           
           >
-          <VStack>
-              {/* ------------------------------------buckets-------------------------------------------- */}
-           <Box  mt="16vh">
-            <Heading mb="16vh">BUCKETS</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              buckets.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-  {/* ------------------------------------sandwiches-------------------------------------------- */}
-  <Box  mt="16vh">
-            <Heading mb="16vh" mt={"5vh"}>SANDWICHES</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              sandwiches.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-            {/* ------------------------------------tenders-------------------------------------------- */}
-  <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>TENDERS</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              tenders.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-          {/* ------------------------------------friedchicken-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>FRIED CHICKEN</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              friedChicken.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-              {/* ------------------------------------pots-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>POT PIES & BOWLS</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              pots.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-             {/* ------------------------------------la-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>A LA CARTE</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              carte.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-               {/* ------------------------------------sides-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>SIDES</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              sides.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-                 {/* ------------------------------------SAUCES-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>SAUCES</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              sauces.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-                  {/* ------------------------------------DESSERTS-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>DESSERTS</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              deserts.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-                  {/* ------------------------------------SPECIAL OFFERS-------------------------------------------- */}
-          <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>SPECIAL OFFERS</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              special.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-        {/* ------------------------------------BEVERAGES-------------------------------------------- */}
-        <Box  mt="16vh">
-            <Heading mb="16vh"  mt={"5vh"}>BEVERAGES</Heading>
-           <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           {
-              beverages.map((items,i)=>(
-                
-            <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-              <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-              <Text>quantity : {items.title}</Text>
-              <Text>price {items.price}</Text>
-              <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
-            </Box>
-              ))
-            }
-                </Grid>
-           </Box>
-
-
-
+          <VStack> 
+        <DisplayOnUI title={"BUCKETS"} item={buckets}  id={"Bucketss"}/>
+        <DisplayOnUI title={"SANDWICHES"} item={sandwiches}   id={"Sandwichess"}/>
+        <DisplayOnUI title={"TENDERS"} item={tenders}  id={"Tenderss"}/>
+        <DisplayOnUI title={"FRIED CHICKEN"} item={friedChicken}  id={"FriedChickens"}/>
+        <DisplayOnUI title={"POT PIES & BOWLS"} item={pots}   id={"Potss"}/>
+        <DisplayOnUI title={"A LA CARTE"} item={carte}   id={"Cartes"}/>
+        <DisplayOnUI title={"SIDES"} item={sides} id={"Sidess"}/>
+        <DisplayOnUI title={"SAUCES"} item={sauces}   id={"Sauces"}/>
+        <DisplayOnUI title={"DESSERTS"} item={deserts}   id={"Dessertss"}/>
+        <DisplayOnUI title={"SPECIAL OFFERS"} item={special}   id={"Specials"}/>
+        <DisplayOnUI title={"BEVERAGES"} item={beverages}   id={"Beveragess"}/>
 
           </VStack>
            

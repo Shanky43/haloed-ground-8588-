@@ -19,6 +19,7 @@
     "react-player": "^2.11.2",
     "react-remove-scroll-bar": "^2.3.4",
     "react-router-dom": "^6.8.1",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "server": "^1.0.38",
     "swiper": "^9.0.5",

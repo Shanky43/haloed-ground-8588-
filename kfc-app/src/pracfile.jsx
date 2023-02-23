@@ -87,3 +87,24 @@ settings={{
   
   //   }
   // }
+
+
+//   const Bucketss=useRef(null)
+// const Sandwichess=useRef(null)
+// const Tenderss=useRef(null)
+// const FriedChickens=useRef(null)
+// const Potss=useRef(null)
+// const Cartes=useRef(null)
+// const Sidess=useRef(null)
+// const Saucess=useRef(null)
+// const Desertss=useRef(null)
+// const Specials=useRef(null)
+// const Beveragess=useRef(null)
+// const scrollToSection=(elementRef)=>{
+//   console.log("its working",elementRef)
+
+//   window.scrollTo({
+//     top:elementRef.current.offsetTop,
+//     behavior:"smooth"
+//   })
+// }

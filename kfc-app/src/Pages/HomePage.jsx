@@ -15,35 +15,9 @@ import {Image,Center, Spacer,Container,Box,Text,Heading,Flex,Divider,
   ModalBody,ModalFooter,HStack
 
 } from "@chakra-ui/react"
+import Models from './Models';
 
 
-function Models() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
- return ( <Box>
-<Text onClick={onOpen}><i className="fa-solid fa-circle-info"></i></Text>
-
-<Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-  <ModalOverlay />
-  <ModalContent>
-    <ModalHeader>Modal Title</ModalHeader>
-    <ModalCloseButton />
-    <ModalBody>
-      <Text fontWeight='bold' mb='1rem'>
-        You can scroll the content behind the modal
-      </Text>
-      {/* <Lorem count={2} /> */}
-    </ModalBody>
-
-    <ModalFooter>
-      <Button colorScheme='blue' mr={3} onClick={onClose}>
-        Close
-      </Button>
-      <Button variant='ghost'>Secondary Action</Button>
-    </ModalFooter>
-  </ModalContent>
-</Modal>
-</Box>)
-}
 
 
 const speacialOffers=[

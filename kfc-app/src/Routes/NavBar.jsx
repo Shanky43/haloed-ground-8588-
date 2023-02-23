@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import logo from "../images/logo1.png"
 import cart from "../images/fffcartbag1.png"
 import "@fontsource/questrial"
+import Location from '../Pages/Location'
 
 
 
@@ -10,7 +11,7 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Container,
-  Flex,Button,Box,Spacer,Image,Center,Avatar,Wrap,WrapItem,Text, position
+  Flex,Button,Box,Spacer,Image,Center,Avatar,Wrap,WrapItem,Text, position, Modal
 
 
 } from '@chakra-ui/react'
@@ -72,7 +73,9 @@ const NavBar = () => {
 </WrapItem>
 </Wrap>
 </Flex>
-<Box mt={"1%"}><Text  bg="black" color="white" size="sm" p="2" m="0% -3% 0px -3%" textAlign={"center"}> <i className ="fa-solid fa-location-dot" style={{color:"red"}}> </i>  &nbsp;Start an Order for Pickup or Delivery</Text></Box>
+<Box mt={"1%"} > <Text  bg="black" color="white" size="sm" p="2" m="0% -3% 0px -3%" textAlign={"center"} cursor="pointer"> 
+<Box display={"flex"} alignItems="center" justifyContent={"center"}> <Center><Location /> &nbsp;Start an Order for Pickup or Delivery</Center> </Box>
+</Text> </Box>
 </Container>
 
 
