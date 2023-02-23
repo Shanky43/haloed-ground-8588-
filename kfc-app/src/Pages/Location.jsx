@@ -11,7 +11,7 @@ const Location = () => {
         return (
 
          
-    <div>
+    <div id='location'>
       <>
       <Text onClick={onOpen}> <Text onClick={onOpen}><i className ="fa-solid fa-location-dot" style={{color:"red", alignItems:"center", justifyContent:"center"} } > </i>
         </Text></Text>

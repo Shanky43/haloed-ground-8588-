@@ -3,9 +3,19 @@ import {Image,Center, Spacer,Container,Box,Text,Heading,Flex,Divider,
     ModalBody,ModalFooter,HStack
   
   } from "@chakra-ui/react"
+import { HashLink as Link } from "react-router-hash-link"
+ 
+// import { Link as ReachLink } from "@reach/router"
+// import { Link } from "react-router-dom"
+
 
 export default function Models() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+// const handleClick=()=>{
+//   props.history.push('/location')
+// }
+
    return ( <Box>
   <Text onClick={onOpen}><i className="fa-solid fa-circle-info"></i></Text>
   
@@ -30,10 +40,13 @@ export default function Models() {
         </Button>
         <Spacer/>
         <Button variant='ghost'
-         border="1px solid black" rounded={"full"} width="200px"
+         border="1px solid black" 
+         rounded={"full"} width="200px"
          bg={"black"}
          color={"white"}
-        >Set My Location</Button></Center></Container>
+         onClick={onClose}
+      // onClick={handleClick}
+        > <Link to ="#location">Set My Location</Link> </Button></Center></Container>
       </ModalFooter>
     </ModalContent>
   </Modal>

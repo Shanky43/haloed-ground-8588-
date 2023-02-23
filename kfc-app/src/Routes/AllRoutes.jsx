@@ -6,6 +6,9 @@ import FindAFFF from '../Pages/FindAFFF'
 import HomePage from '../Pages/HomePage'
 import Menu from '../Pages/Menu'
 import PageNotFound from '../Pages/PageNotFound'
+import Location from "../Pages/Location"
+import SignInpage from '../Pages/SignInpage'
+import SignUpPage from '../Pages/SignUpPage'
 
 
 
@@ -19,6 +22,10 @@ const AllRoutes = () => {
         <Route path = "/career" element={<Career />}> </Route>
         <Route path = "/about" element={<About />}> </Route>
         <Route path ="/findAFFF" element={<FindAFFF/>}></Route>
+        <Route path ="/findAFFF" element={<FindAFFF/>}></Route>
+        <Route path ="/location" element={<Location/>}></Route>
+        <Route path ="/sigininpage" element={<SignInpage/>}></Route>
+        <Route path ="/signuppage" element={<SignUpPage/>}></Route>
         <Route path ="*" element={<PageNotFound/>}></Route>
       </Routes>
 

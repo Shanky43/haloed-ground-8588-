@@ -64,7 +64,7 @@ const NavBar = () => {
   </Box>
   <Spacer />
   <Box>
-    <Button rounded={"full"} bg="#e4002b" color="white">Start Order</Button>
+    <Button rounded={"full"} bg="#e4002b" color="white"><Link to="sigininpage">Start Order</Link></Button>
   </Box>
   <Wrap pl="5%" alignItems={"center"} alignContent="center" textAlign="center">
 <WrapItem >

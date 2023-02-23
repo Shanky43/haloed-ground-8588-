@@ -1,5 +1,6 @@
 import React from 'react'
 import fff1 from "../images/fff1.png";
+import {Link } from "react-router-dom"
 
 
 import {Image,Center, Spacer,Container,Box,Text,HStack,VStack,UnorderedList,ListItem
@@ -33,7 +34,7 @@ const Footer = () => {
                       
                        <UnorderedList style={{listStyle:"none"}} cursor={"pointer"}>
                         <Text>FFF Food</Text>
-                        <ListItem> Menu</ListItem>
+                        <ListItem><Link to={"/menu"}> Menu</Link></ListItem>
                         <ListItem> Full Nutrition Guide</ListItem>
                         <ListItem>Nutrition Calculator</ListItem>
                         <ListItem> Food Allergies & Sensitivities</ListItem>
