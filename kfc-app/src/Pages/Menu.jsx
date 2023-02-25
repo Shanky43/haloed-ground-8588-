@@ -12,10 +12,10 @@ const DisplayOnUI=({title,item,ref,id })=>{
 const [status,setStatus]=useState(true)
 
 
-const [cartItems,setCartItems]=useState([])
+const [cartItems,setCartItems]=useState(JSON.parse(localStorage.getItem("cart"))||[])
 const handleCartItems=(newCartItems)=>{
-  console.log("cartitems", )
-  console.log(cartItems.id==newCartItems.id)
+  // console.log("cartitems", )
+  // console.log(cartItems.id==newCartItems.id)
 if(cartItems.id!==newCartItems.id){
   setStatus(false)
   setCartItems([...cartItems,newCartItems])

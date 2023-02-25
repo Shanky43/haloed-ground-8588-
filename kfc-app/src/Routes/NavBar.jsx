@@ -34,7 +34,7 @@ const NavBar = () => {
   const navigate =useNavigate()
   const IsAuthCheck=()=>{
     // console.log("login")
-        (!isAuth? navigate("/sigininpage"):navigate("/accountpage"))
+        (isAuth? navigate("/sigininpage"):navigate("/accountpage"))
         
   }
 
