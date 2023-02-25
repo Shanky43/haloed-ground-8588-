@@ -16,9 +16,7 @@ import {Image,Center, Spacer,Container,Box,Text,Heading,Flex,Divider,
 
 } from "@chakra-ui/react"
 import Models from './Models';
-
-
-
+import {Link} from "react-router-dom"
 
 const speacialOffers=[
   {
@@ -114,7 +112,9 @@ const HomePage = () => {
 <HStack mb="10">
 <Text fontSize="lg" fontWeight="bold">Finger Lickin' Good® is Now Just a Few Clicks Away</Text>
 <Spacer/>
-  <Button color="black" fontWeight="500" fontSize={"sm"} borderRadius="20">Start Order</Button>
+  <Button color="black" fontWeight="500" fontSize={"sm"} borderRadius="20"><Link to="/menu"
+  scroll={(el) => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+  >Start Order </Link></Button>
 </HStack>
 <Center >
           <hr style={{width:"2%",borderWidth:"0px", height:"10vh" , background:"white", marginRight:"1%"}}/>
@@ -141,7 +141,7 @@ const HomePage = () => {
          <Box w={"500"} lineHeight="10">
          <Heading fontSize={"6xl"}pt={"100"}><Text>UNLOCK MORE FINGER LICKIN'GOOD <br/> BENEFITS</Text></Heading>
          <Text >Create an account to get access to exclusive deals and faster checkout.</Text>
-         <Button color={"white"} bg="black" rounded={"20"} mb="20">Sign me up!</Button>
+         <Button color={"white"} bg="black" rounded={"20"} mb="20"><Link to= "/sigininpage">Sign me up!</Link> </Button>
          </Box>
          {/* <Spacer /> */}
         <Box> <Image src={oldman} h="75vh" />  </Box>

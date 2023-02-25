@@ -33,16 +33,16 @@ import {
           {/* <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign in to your account</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+              // to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
             </Text>
           </Stack> */}
-          <Box       w="450px" h={"80vh"} mt="10vh"
-          
+          <Box       w="500px"  mt="10vh"
+           pb={"10vh"}
             rounded={'lg'}
             bg={useColorModeValue("#ffffff")}
             boxShadow={'lg'}
-            p={8}>
-            <Stack spacing={4} >
+            p={12}>
+            <Stack spacing={4}  >
                 <Text fontSize={"20"} pt="5vh" fontWeight="bold">LOG IN TO FFF</Text>
               <FormControl id="email">
                 <FormLabel>Email </FormLabel>
@@ -73,7 +73,7 @@ import {
                   }}>
                  Log In
                 </Button>
-                <Box>Don't have an account? <u style={{cursor:"pointer"}}> <Link to ="/signuppage">Join Now</Link></u></Box>
+                <Box >Don't have an account? <u  style={{cursor:"pointer"}}> <Link to ="/signuppage">Join Now</Link></u></Box>
 
               </Stack>
             </Stack>

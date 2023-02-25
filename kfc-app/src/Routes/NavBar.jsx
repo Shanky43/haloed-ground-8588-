@@ -1,9 +1,10 @@
-import React, { useState,useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useState,useEffect, useContext } from 'react'
+import { Link,  NavLink , useNavigate} from 'react-router-dom'
 import logo from "../images/logo1.png"
 import cart from "../images/fffcartbag1.png"
 import "@fontsource/questrial"
 import Location from '../Pages/Location'
+
 
 
 
@@ -15,6 +16,7 @@ import { Container,
 
 
 } from '@chakra-ui/react'
+import { Authenticator } from '../context/Authentication'
 
 
 const links =[
@@ -25,7 +27,17 @@ const links =[
     {path:"/findAFFF",title:`Find A FFF`},
  ]
 
+
+
 const NavBar = () => {
+  const {isAuth} = useContext(Authenticator)
+  const navigate =useNavigate()
+  const IsAuthCheck=()=>{
+    // console.log("login")
+        (!isAuth? navigate("/sigininpage"):navigate("/accountpage"))
+        
+  }
+
 
   return (
 <div  style={{position:"relative", zIndex:"2"}} >
@@ -64,12 +76,14 @@ const NavBar = () => {
   </Box>
   <Spacer />
   <Box>
-    <Button rounded={"full"} bg="#e4002b" color="white"><Link to="sigininpage">Start Order</Link></Button>
+    <Button rounded={"full"} bg="#e4002b" color="white"><Link to ="/menu" 
+    scroll={(el) => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+    >Start Order</Link></Button>
   </Box>
   <Wrap pl="5%" alignItems={"center"} alignContent="center" textAlign="center">
 <WrapItem >
-<Box><i className="fa-solid fa-2x fa-user-tie"></i></Box>
-<Box ml="50px"><Image src={cart} alt="cartImage" w="10" h="10"/></Box>
+<Box cursor={"pointer"}> <i className="fa-solid fa-2x fa-user-tie" onClick={()=>IsAuthCheck()}></i></Box>
+<Box ml="50px" > <Link to= "/cart"> <Image src={cart} alt="cartImage" w="10" h="10"/> </Link></Box>
 </WrapItem>
 </Wrap>
 </Flex>

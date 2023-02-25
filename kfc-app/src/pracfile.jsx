@@ -108,3 +108,29 @@ settings={{
 //     behavior:"smooth"
 //   })
 // }
+
+
+
+
+
+// const [quant,setQuant]=useState(1)
+
+
+// const [cartItems,setCartItems]=useState([])
+// const handleCartItems=(newCartItems)=>{
+// console.log(cartItems)
+
+// cartItems.map(({id,quantity})=>{
+//   if(id===newCartItems.id){
+//     setCartItems({quantity:quantity+1})
+//    console.log("its coming inside")
+//   }
+//   else{
+// setQuant(1)
+
+//  }
+ 
+// })
+// if(cartItems.id!==newCartItems.id){
+//   setCartItems([...cartItems,{...newCartItems,["quantity"]:quant}])
+// }

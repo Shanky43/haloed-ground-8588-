@@ -1,28 +1,71 @@
 import {React,useState,useEffect, useRef} from 'react'
 import {Image,Center, Spacer,Container,Box,Text,Flex,HStack,VStack,UnorderedList,ListItem,
-  Heading,Divider,Grid,useDisclosure,Modal,ModalContent,ModalHeader,ModalOverlay,ModalCloseButton,
-  ModalBody,ModalFooter,Button,
-  VisuallyHidden} from "@chakra-ui/react"
+  Heading,Divider,Grid,Button,Alert,AlertIcon,AlertTitle,AlertDescription 
+} from "@chakra-ui/react"
   import { HashLink as Link } from 'react-router-hash-link';
-
+import cup from "../images/cup+.png"
 import Footer from "./Footer"
 import axios from "axios"
 import Models from './Models';
 
-
 const DisplayOnUI=({title,item,ref,id })=>{
+const [status,setStatus]=useState(true)
+
+
+const [cartItems,setCartItems]=useState([])
+const handleCartItems=(newCartItems)=>{
+  console.log("cartitems", )
+  console.log(cartItems.id==newCartItems.id)
+if(cartItems.id!==newCartItems.id){
+  setStatus(false)
+  setCartItems([...cartItems,newCartItems])
+  localStorage.setItem("cart", JSON.stringify(cartItems))
+}
+  if(status==false){
+    <Alert status='error' mt ="200px">
+  <AlertIcon />
+  <AlertTitle>Item is alreay in cart</AlertTitle>
+  <AlertDescription></AlertDescription>
+</Alert>
+  }
+
+
+
+
+
+}
+console.log("line18",cartItems)
   return (
     <Box id={id} >
     <Heading mb="16vh" mt={"10vh"} ref={ref} >{title}</Heading>
    <Grid templateColumns='repeat(3, 1fr)' gap={6}>
    {
-      item.map((items,i)=>(
+      item.map(({images,title,price,id},i)=>(
         
-    <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px">
-      <Image src={items.images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "300ms"}} mb="5"/>
-      <Text>quantity : {items.title}</Text>
-      <Text>price {items.price}</Text>
+    <Box color={"gray"} mb="5" key={i+Math.random()} lineHeight="30px" p={"15px 15px 10px 15px"} 
+    rounded="10"
+    css={{
+      boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+    }}
+    >
+      <Image src={images} style={{width:"300px",height:"40vh",borderRadius:"5%"}} _hover={{transform:"scale(1.1)", transitionDelay: "100ms"}} mb="5"/>
+      <Text>quantity : {title}</Text>
+      <Text>price {price}</Text>
       <Flex> <Text style={{display:"flex"}}>Set location for pricing &nbsp;<Models/></Text></Flex>
+      <Button
+            w={'full'}
+            mt={8}
+            bg={"#e4002b"}
+            color={'white'}
+            rounded={'full'}
+            
+            _hover={{
+              transform: 'translateY(-2px)',
+              boxShadow: 'lg', 
+            }}  onClick={()=>handleCartItems({id,images,price,title})}>
+         <Flex><Text>Add to Cart</Text>&nbsp;&nbsp;&nbsp;  <Box w="6" h="5"><Image src={cup} alt="addtocart"/></Box></Flex>
+
+          </Button>
     </Box>
       ))
     }

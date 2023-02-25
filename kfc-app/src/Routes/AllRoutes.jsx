@@ -9,6 +9,8 @@ import PageNotFound from '../Pages/PageNotFound'
 import Location from "../Pages/Location"
 import SignInpage from '../Pages/SignInpage'
 import SignUpPage from '../Pages/SignUpPage'
+import AccountPage from '../Pages/AccountPage'
+import CartPage from '../Pages/CartPage'
 
 
 
@@ -26,6 +28,8 @@ const AllRoutes = () => {
         <Route path ="/location" element={<Location/>}></Route>
         <Route path ="/sigininpage" element={<SignInpage/>}></Route>
         <Route path ="/signuppage" element={<SignUpPage/>}></Route>
+        <Route path='/accountpage' element={<AccountPage/>}></Route>
+        <Route path='/cart' element={<CartPage/>}></Route>
         <Route path ="*" element={<PageNotFound/>}></Route>
       </Routes>
 
