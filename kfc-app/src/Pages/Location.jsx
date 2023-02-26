@@ -6,14 +6,30 @@ import {Image,Center, Spacer,Container,Box,Text,Heading,Flex,Divider,
 import pickup from "../images/pickup.png"
 import car from "../images/car.png"
 
-const Location = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-        return (
+import { render, screen, fireEvent } from '@testing-library/react';
+import { useNavigate } from 'react-router-dom';
 
-         
-    <div id='location'>
+const Location = () => {
+  const navigate=useNavigate()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    console.log(onOpen)
+    // const button = screen.getByText('sdsfsd');
+    // fireEvent.click(button);
+
+  //  test('clicking the button calls the onClick function', () => {
+  //     // const onClick = jest.fn();
+  //     // render(<MyComponent onClick={onClick} />);
+   
+  //     // expect(onClick).toHaveBeenCalled();
+  //   });
+
+        return (
+          <div id='location'>
       <>
-      <Text onClick={onOpen}> <Text onClick={onOpen}><i className ="fa-solid fa-location-dot" style={{color:"red", alignItems:"center", justifyContent:"center"} } > </i>
+      {/* {fireEvent.click(onOpen)} */}
+     {/* { onOpen} */}
+      <Text onClick={onOpen} > <Text onClick={onOpen} >
+        <i className ="fa-solid fa-location-dot" style={{color:"red", alignItems:"center", justifyContent:"center"} } ></i>
         </Text></Text>
 
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -78,6 +94,7 @@ const Location = () => {
             rounded="full"
             border="1px solid black"
             fontWeight={"bold"}
+            onClick={()=> navigate("/cart")}
             >DELIVERY</Button>
               </Center>
             </Container>

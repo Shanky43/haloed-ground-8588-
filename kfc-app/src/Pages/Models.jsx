@@ -3,20 +3,25 @@ import {Image,Center, Spacer,Container,Box,Text,Heading,Flex,Divider,
     ModalBody,ModalFooter,HStack
   
   } from "@chakra-ui/react"
-import { HashLink as Link } from "react-router-hash-link"
+import { useEffect, useState } from "react"
+
  
 // import { Link as ReachLink } from "@reach/router"
 // import { Link } from "react-router-dom"
 
+import Location from "./Location"
 
 export default function Models() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-
+const [showModal,setShowModel]=useState(false)
 // const handleClick=()=>{
 //   props.history.push('/location')
 // }
+// useEffect(()=>{
+  
+// },[showModal])
 
-   return ( <Box>
+return( <Box>
   <Text onClick={onOpen}><i className="fa-solid fa-circle-info"></i></Text>
   
   <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} height="500px" >
@@ -44,9 +49,14 @@ export default function Models() {
          rounded={"full"} width="200px"
          bg={"black"}
          color={"white"}
-         onClick={onClose}
-      // onClick={handleClick}
-        > <Link to ="#location">Set My Location</Link> </Button></Center></Container>
+         onClick={()=>{
+          // onClose()
+      setShowModel(!showModal);
+    }
+    
+    }
+     
+        > Set My Location &nbsp;  <Location />  </Button></Center></Container>
       </ModalFooter>
     </ModalContent>
   </Modal>

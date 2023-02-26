@@ -1,5 +1,6 @@
   import { Container,Center,HStack,Box,useColorModeValue,Flex,Stack,VStack,
-      Heading,Text,Button,Avatar,Image,Spacer, space,Checkbox    } from '@chakra-ui/react'
+      Heading,Text,Button,Avatar,Image,Spacer, space,Checkbox,Alert,
+      AlertIcon,AlertTitle,AlertDescription   } from '@chakra-ui/react'
   import React, { useEffect, useState } from 'react'
   import offcard from "../images/applyoffers.png"
   import Footer from './Footer'
@@ -15,6 +16,8 @@
       const [cartItems,setCartItems]=useState(JSON.parse(localStorage.getItem("cart"))||[])
       const [showCart,setShowCart]=useState(false)
       const [call,setCall]=useState(false) 
+      const [sucessfull,setSucessfull]=useState(false)
+      // const [checkInd,setCheckInd]=useState([])
           
       useEffect(() => {
         if (localStorage.getItem('cart') == null) {
@@ -34,9 +37,6 @@
           setTotal(Math.round(amt + (amt * GST) / 100));
         }
       }, []);
-      
-
-
 
   useEffect(()=>{
       if(localStorage.getItem("cart")!==null){
@@ -57,12 +57,6 @@
     }, [cartItems]);
 
       var GST=19.90;
-
-  console.log(cartItems.length)
-
-
-
-
   if(showCart==true){
     return(
   <div>
@@ -98,21 +92,40 @@
     )
   }else{
     return ( 
-
       <div>
-  <Container mt={"20vh"} maxW="1300px">
+     <Container mt={"20vh"} maxW="1300px">
+  <Center>   {
+      sucessfull && (
+        <Alert
+        status='success'
+        variant='subtle'
+        flexDirection='column'
+        alignItems='center'
+        justifyContent='center'
+        textAlign='center'
+        height='200px'
+        borderRadius="10px"
+      >
+        <AlertIcon boxSize='40px' mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize='lg'>
+          Order place sucessfull!
+        </AlertTitle>
+        <AlertDescription maxWidth='sm'>
+    <Text fontWeight={"500"} fontSize="20px" >    Total Order : {total}</Text>
+        </AlertDescription>
+      </Alert>
+      )
+     }</Center>
   <Heading mb={"10"}>MY CART</Heading>  
       <Center>
-            
-            <Box style={{display:"flex"}}>
+         <Box style={{display:"flex"}}>
               <Container>
-                  <Box  w="800px" h={"500px"} overflow="scroll"
+                  <Box  w="850px" h={"500px"} overflow="scroll"
                   css={{
                     '&::-webkit-scrollbar':{
                       display:"none"
                     }
                   }}>
-
                     {
                       cartItems.map(({images,title,price},index)=>(
                         <Box p="15px 30px 15px 30px"bg="#f8f7f5" m="5"  borderRadius={"10px"}  key ={Date.now()+Math.random()}>
@@ -143,14 +156,16 @@
                     justifyContent="center"
                     fontWeight={"bold"} 
                     fontSize={"20"}
+                    // data-id={index}
                     onClick={() => {
+                      // console.log(e.target.dataset.id)
+                      // let ind=e.target.dataset.id
                       setQnt(qnt - 1);
                       let amt = subCount - Number(cartItems[index].price);
                       setSubCount(Math.round(amt));
                       setTotal(Math.round(amt + (amt * GST) / 100));
                     }}
                     >-</Text></Button>
-
 
                   <Text ml={2} mr="2">{qnt}</Text>
 
@@ -160,42 +175,54 @@
                     transform: 'translateY(-2px)',
                     boxShadow: 'lg', 
                   }}  bg="white" >
+                    {/* {setQnt([...qnt,1])} */}
                     <Text  alignItems={"center"}
                     textAlign={"center"}
                     justifyContent="center"
                     fontWeight={"bold"}
+                    data-id={index}
                     fontSize={"20"}
-                  onClick={() => {
-                      setQnt(qnt + 1);
-                      let amt = subCount + Number(cartItems[index].price);
-                      setSubCount(Math.round(amt));
-                      setTotal(Math.round(amt + (amt * GST) / 100));
-                    }
-                  }
+                    className="inc"
+                  onClick={()=>{
+                    // cartItems.forEach((ele,i)=>{
+                    //   if(e.target.dataset.id==i){
+                    //     // let ind=e.target.dataset.id
+                    //     setQnt({...qnt,[`qnt ${i}`]:qnt+1} );
+                    //     let amt = subCount + Number(cartItems[i].price);
+                    //     setSubCount(Math.round(amt));
+                    //     setTotal(Math.round(amt + (amt * GST) / 100));
+                    //   }
+                    //     })   
+
+                    // setQnt(qnt + 1);
+                    // let amt = subCount - Number(cartItems[index].price);
+                    // setSubCount(Math.round(amt));
+                    // setTotal(Math.round(amt + (amt * GST) / 100));
+                    setQnt(qnt + 1);
+                    let amt = subCount + Number(cartItems[index].price);
+                    setSubCount(Math.round(amt));
+                    setTotal(Math.round(amt + (amt * GST) / 100));
+                  }}
                     >+</Text></Button>
                 </Flex>
               </Center>
             </Container>
                           <Center><Text> ₹ {price}</Text></Center>
-                          
-                          </Flex>
-            
-                        </Box>
+        </Flex>
+</Box>
+                      //  <productItems {...ele} />
                       ))
                     }
                   </Box>
-                  
               </Container>
-              
             </Box>
-          
-            <Spacer/>
-              <Box>
-                  <Container maxW={"1000px"}>
-                  <Center py={6}>
+     <Spacer/>
+      <Box>
+      <Container maxW={"1000px"}>
+      <Center py={6}>
         <Box
           maxW={'800px'}
-        p="8"
+          p="8"
           bg={'white'}
           boxShadow={'2xl'}
           rounded={'md'}
@@ -217,16 +244,14 @@
               <Spacer />    
               <Box><Text> : ₹ {subCount}</Text><Text>:  &nbsp;{GST} </Text><Text>: ₹{total} </Text></Box>
             </Flex>
-            
-              </Text>
-        
-            </Stack>
+          </Text>
+         </Stack>
 
             <Stack direction={'row'} justify={'center'} spacing={6}>
           
             
             <Box  border={"1px solid #EEEDED"} w="270px" h="110px">
-            <HStack alignItems={"center"} alignContent="center" justifyContent={"center"}>   <Checkbox ></Checkbox>
+            <HStack alignItems={"center"} alignContent="center" justifyContent={"center"}><Checkbox ></Checkbox>
             <Text p="2">
                   Donate ₹5.00 Tick to Add <br /> Hope. <br />
                   Our goal is to feed 20 million <br /> people by 2023.</Text>
@@ -245,16 +270,27 @@
               _hover={{
                 transform: 'translateY(-2px)',
                 boxShadow: 'lg',
-              }}>
+              }}
+
+              onClick={()=>setSucessfull(!sucessfull)}
+              >
             <HStack justifyContent={"space-between"}><Text>Checkout </Text><Spacer />  <Text> ₹ {total}</Text> </HStack>
             </Button>
           </Box>
         </Box>
       </Center>
+
                 </Container>
               </Box>
-      
+             
       </Center>
+      <Text cursor={"pointer"} fontWeight={"bold"} onClick={()=>{localStorage.removeItem('cart')
+       window.location.reload();
+    }}>Remove All</Text>
+    <Center>  
+  
+     
+     </Center>
   </Container>
   <Footer/>
       </div>

@@ -34,7 +34,7 @@ if(cartItems.id!==newCartItems.id){
 
 
 }
-console.log("line18",cartItems)
+// console.log("line18",cartItems)
   return (
     <Box id={id} >
     <Heading mb="16vh" mt={"10vh"} ref={ref} >{title}</Heading>
@@ -63,7 +63,7 @@ console.log("line18",cartItems)
               transform: 'translateY(-2px)',
               boxShadow: 'lg', 
             }}  onClick={()=>handleCartItems({id,images,price,title})}>
-         <Flex><Text>Add to Cart</Text>&nbsp;&nbsp;&nbsp;  <Box w="6" h="5"><Image src={cup} alt="addtocart"/></Box></Flex>
+         <Flex ><Text>Add to Cart</Text>&nbsp;&nbsp;&nbsp;  <Box w="6" h="5"  bg="#e4002b" color={"#e4002b"}><Image src={cup} alt="addtocart"  bg="#e4002b" color={"#e4002b"}/></Box></Flex>
 
           </Button>
     </Box>

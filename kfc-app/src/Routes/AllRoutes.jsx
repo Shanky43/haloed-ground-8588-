@@ -11,6 +11,7 @@ import SignInpage from '../Pages/SignInpage'
 import SignUpPage from '../Pages/SignUpPage'
 import AccountPage from '../Pages/AccountPage'
 import CartPage from '../Pages/CartPage'
+import CheckOutPage from '../Pages/CheckOutPage'
 
 
 
@@ -30,6 +31,7 @@ const AllRoutes = () => {
         <Route path ="/signuppage" element={<SignUpPage/>}></Route>
         <Route path='/accountpage' element={<AccountPage/>}></Route>
         <Route path='/cart' element={<CartPage/>}></Route>
+        <Route path ="/checkoutpage" element={<CheckOutPage/>}></Route>
         <Route path ="*" element={<PageNotFound/>}></Route>
       </Routes>
 

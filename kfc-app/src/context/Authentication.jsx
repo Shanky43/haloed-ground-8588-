@@ -6,14 +6,9 @@ export  const Authenticator= createContext()
 const  Authentication = (props) => {
 
     const [isAuth,setIsAuth] =useState(false)
-    const login = () => {
-        setIsAuth(true);
-      };
-
-
-
+  
   return (
-   <Authenticator.Provider value={{isAuth,login}}>
+   <Authenticator.Provider value={{isAuth,setIsAuth}}>
     {props.children} 
    </Authenticator.Provider>
   )
