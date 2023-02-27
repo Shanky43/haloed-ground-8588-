@@ -129,7 +129,7 @@ const sections =[
 
   return (
     <div style={{paddingTop:"15vh"}}>
-        <Container maxW="1240px" display={"block"} > 
+        <Container maxW="1300px" display={"block"} > 
        <HStack>
       <VStack>
       <Box style={{position:"relative"}}  mb="10vh">
@@ -163,7 +163,7 @@ const sections =[
       </VStack>
           <Spacer/>
           <Flex   >
-          <Container maxW={"900px"} 
+          <Container maxW={"1100px"} 
           h="100vh" overflow={"scroll"} 
           scrollBehavior={"auto"} 
           css={{

@@ -30,6 +30,7 @@ const [error, setError] = useState("");
 const navigate=useNavigate()
 const {isAuth,setIsAuth} =useContext(Authenticator)
 const [showError,setShowError] =useState(false)
+const [loginSuccesfull,setLoginSuccessfull]= useState(false)
 
 
 let existingUserDetails=JSON.parse(localStorage.getItem("userSignUpDetails"))
@@ -43,15 +44,21 @@ const handleOnChange=(e)=>{
 }
 console.log(validateCred)
 const handleLogin=()=>{
-  if(localStorage.getItem("existingUserDetails")==null){
+  if(localStorage.getItem("existingUserDetails")==undefined){
+    setLoginSuccessfull(false)
 setShowError(true)
+  }else if(localStorage.getItem("existingUserDetails")!==null){
+    
+    setShowError(false)
   }
-else if(existingUserDetails[0].email!==validateCred.email){
+ if(existingUserDetails[0].email!==validateCred.email){
 setError("Incorrect Email")
 }else if(existingUserDetails[0].password!==validateCred.password){
   setError("Incorrect password")
 }else{
 setError("")
+setShowError(false)
+setLoginSuccessfull(true)
 console.log(existingUserDetails[0])
 
 axios.post(`https://63fb3a3c2027a45d8d628234.mockapi.io/UserSCredentials`, existingUserDetails[0])
@@ -61,7 +68,7 @@ axios.post(`https://63fb3a3c2027a45d8d628234.mockapi.io/UserSCredentials`, exist
 .catch(error => {
   console.log(error);
 }).finally(()=> {
-setIsAuth(!isAuth)
+setIsAuth(true)
 navigate("/menu")});
 }}
 
@@ -70,7 +77,7 @@ useEffect(()=>{
 if(showError){
   toast({
     title: 'Create Account.',
-    description: "Please Be member of FFF family by creating a account",
+    description: "Please Be a member of FFF family by creating a account",
     status: 'error',
     duration: 3000,
     isClosable: true,

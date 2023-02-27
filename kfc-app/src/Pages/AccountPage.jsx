@@ -40,6 +40,12 @@ const fetchData=()=>{
 
   }).catch((error)=>console.log(error))
 }
+useEffect(()=>{
+  if(pass){
+    pushData()
+  }
+
+},[pass])
 
 console.log("line40", fetchedData.cartItems)
 
@@ -48,21 +54,27 @@ useEffect(()=>{
 },[])
 const handleSignOut=(e)=>{
   e.preventDefault()
-
+  setPass(true)
  console.log(fetchedData,"line56")
 
- setPass(true)
- axios.post('https://63fb3a3c2027a45d8d628234.mockapi.io/UserSCredentials', fetchedData, { headers: { 'Content-Type': 'application/json' } })
+
+ setTimeout(()=>{
+  axios.post('https://63fb3a3c2027a45d8d628234.mockapi.io/UserSCredentials', fetchedData, { headers: { 'Content-Type': 'application/json' } })
  .then(response => {
    console.log(response.data);
+
  })
  .catch(error => {
    console.log(error);
  });
+ },3000)
   
-   localStorage.removeItem('cart')
-   localStorage.removeItem('userSignUpDetails')
-   navigate("/")
+ localStorage.removeItem('cart')
+ localStorage.removeItem('userSignUpDetails')
+ localStorage.removeItem('userAddress')
+ 
+ navigate("/")
+ window.location.reload()
 }
 function pushData(){
   setFetchedData(prevState => ({
@@ -70,12 +82,7 @@ function pushData(){
     cartItems: [...prevState.cartItems,CartDetails ]
   }))
 }
-  useEffect(()=>{
-    if(pass){
-      pushData()
-    }
-
-  },[pass])
+  
 
 // console.log("Line76", fetchedData)
 

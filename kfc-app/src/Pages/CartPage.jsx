@@ -1,11 +1,11 @@
   import { Container,Center,HStack,Box,useColorModeValue,Flex,Stack,VStack,
-      Heading,Text,Button,Avatar,Image,Spacer, space,Checkbox,Alert,
+      Heading,Text,Button,Avatar,Image,Spacer, space,Checkbox,Alert,useToast ,
       AlertIcon,AlertTitle,AlertDescription   } from '@chakra-ui/react'
   import React, { useContext, useEffect, useState } from 'react'
   import offcard from "../images/applyoffers.png"
   import Footer from './Footer'
   import emptycart from "../images/emptycart.png"
-  import {Link} from "react-router-dom"
+  import {Link,useNavigate} from "react-router-dom"
 import {Authenticator} from "../context/Authentication"
   const CartPage = () => {
       const [count,setCount]=useState(0)
@@ -14,11 +14,15 @@ import {Authenticator} from "../context/Authentication"
     const [qnt,setQnt]=useState(1)
     let getAddress=JSON.parse(localStorage.getItem("userAddress"))
 const {isAuth}= useContext(Authenticator)
+const navigate=useNavigate()
+const toast = useToast()
+console.log(isAuth)
       const [cartItems,setCartItems]=useState(JSON.parse(localStorage.getItem("cart"))||[])
       const [showCart,setShowCart]=useState(false)
       const [call,setCall]=useState(false) 
       const [sucessfull,setSucessfull]=useState(false)
       // const [checkInd,setCheckInd]=useState([])
+
           
       useEffect(() => {
         if (localStorage.getItem('cart') == null) {
@@ -69,21 +73,18 @@ var deleteFunctionality=(id)=>{
         var newData=cartItems.filter((item) => item.id !== id);
         console.log(cartItems.id)
  setCartItems(newData)
+localStorage.setItem('cart', JSON.stringify(cartItems));
+ console.log(cartItems.length)
 
-
-
-      }
+}
 
 useEffect(()=>{
-  let newCount= localStorage.setItem('cart', JSON.stringify(cartItems));
-  if(newCount==undefined||newCount==null||newCount.length==0){
+  setCount(cartItems.length)
+  if(cartItems.length==undefined||cartItems.length==null||cartItems.length===0){
     setCount(0)
     localStorage.removeItem("cart")
     setShowCart(true)
-      }else{
-    setCount(newCount.length)
-     }
-
+      }
 },[cartItems])
 
 
@@ -141,7 +142,7 @@ useEffect(()=>{
           Order place sucessfull!
         </AlertTitle>
         <AlertDescription maxWidth='sm'>
-    <Text fontWeight={"500"} fontSize="20px" >    Total Order : {total}</Text>
+    <Text fontWeight={"500"} fontSize="20px" >    Total Order Value : {total}</Text>
     <Text>Delivery Address : {getAddress}</Text>
         </AlertDescription>
       </Alert>
@@ -307,8 +308,20 @@ useEffect(()=>{
 
               onClick={()=>{
                 if(isAuth==true){
-                  setSucessfull(!sucessfull)
-                }else{
+                  if(localStorage.getItem("userAddress")==undefined||localStorage.getItem("userAddress")==null){
+                    toast({
+                      title: 'Address missing.',
+                      description: "Please Add address before checkout",
+                      status: 'error',
+                      duration: 3000,
+                      isClosable: true,
+                    })
+                  }else{
+                    setSucessfull(!sucessfull)
+                  }
+                  
+                }
+                if(isAuth==false){
                   toast({
                     title: 'Login required.',
                     description: "Please login before checkout",
@@ -316,6 +329,9 @@ useEffect(()=>{
                     duration: 3000,
                     isClosable: true,
                   })
+                  setTimeout(()=>{
+                    navigate("/sigininpage")
+                  },1000)
                 }
                 
                 }}
