@@ -70,5 +70,87 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+<!-- # haloed-ground-8588- -->
+# KFC clone ( Individual Project )
 
+# https://fff-gilt.vercel.app/
+
+KFC is a global chicken restaurant brand with a rich, decades-long history of success and innovation. It all started with one cook, Colonel Harland Sanders, who created a finger lickin' good recipe more than 75 years ago
+
+## Deployed link of project
+- <a href="https://fff-gilt.vercel.app/">KFC (Clone)</a>
+
+## 🛠 Tech Stack
+
+- React
+- Chakra-UI
+- Boothstrap
+- Material UI
+- CSS
+- backend (vercel)
+
+## Functionality
+
+- Login  ( E-mail: "eve.holt@reqres.in" && Password: "citysilica" )
+- Authentication
+- Add to cart
+- Menu page
+- Checkout
+- Account Page
+- 404 Error page
+- Sign In page
+- Sign Out page
+- Footer Page
+## Website flow for User
+
+- Home Page
+
+- Category wise products
+
+- Menu Page(List of all the Items)
+
+- Cart Page
+
+- Address Page
+
+- Account Page
+
+- 404 Error Page
+
+- Footer Page
+
+
+
+
+    
+#### Hard Coded Card details for payment section
+
+- COD / DELIVERY
+
+#### Website Presentation :
+![KFC-webite-HOME-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/HOME%20PAGE.png)
+
+![KFC-webite-MENU-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/MENU%20PAGE.png)
+
+![KFC-webite-EMPTY-CART-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/EMPTY%20CART%20PAGE.png)
+
+![KFC-webite-SIGN-IN-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/SIGN%20IN%20PAGE.png)
+
+![KFC-webite-SIGN-UP-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/SIGN%20UP%20PAGE.png)
+
+![KFC-webite-CART-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/CART%20PAGE.png)
+
+![KFC-webite-DELIVERY-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/DELIVERY%20PAGE.png)
+
+![KFC-webite-USER-ACCOUNT-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/USER%20ACCOUNT%20PAGE.png)
+
+![KFC-webite-FOOTER-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/FOOTER%20PAGE.png)
+
+![KFC-webite-404-ERROR-PAGE](https://github.com/Shanky43/haloed-ground-8588-/blob/day-6/kfc-app/src/images/404%20ERROR%20PAGE.png)
+
+## Thank you note
+Thank you all who is giving precious time to visit my little creative project which is made with lot of efforts.
+
+_<p align="center"><sub>- Readme file designed by <a href="https://github.com/Shanky43">SHANKAR S</a> -</sub></p>_
+  
 
