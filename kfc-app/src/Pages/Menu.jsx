@@ -107,11 +107,9 @@ const fetchAndRenderData=()=>{
   setBeverages(res.data.beverages)
   setSpecial(res.data.specialoffers)
   }).catch((error)=>console.log(error))
-
 }
 useEffect(() => {
   fetchAndRenderData()
-
 }, [])
 
 const sections =[

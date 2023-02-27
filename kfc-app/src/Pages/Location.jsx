@@ -8,8 +8,10 @@ import car from "../images/car.png"
 
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
+import Addresspage from './Addresspage';
 
 const Location = () => {
+  const [showModal,setShowModel]=useState(true)
   const navigate=useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
     console.log(onOpen)
@@ -83,8 +85,17 @@ const Location = () => {
                rounded="full"
                border="1px solid black"
                fontWeight={"bold"}
-               onClick={onClose}>
-             <Text> QUICK PICK UP</Text>
+               onClick={()=>{
+            
+                setTimeout(() => {
+               navigate("/cart")
+               onClose()
+                }, 20000);
+               
+              }}
+              
+               >
+             <Text> <Addresspage message={"QUICK PICK UP "} />{onClose}</Text>
             </Button>
             <Spacer />
             
@@ -94,8 +105,17 @@ const Location = () => {
             rounded="full"
             border="1px solid black"
             fontWeight={"bold"}
-            onClick={()=> navigate("/cart")}
-            >DELIVERY</Button>
+            onClick={()=>{
+            
+              setTimeout(() => {
+             navigate("/cart")
+             onClose()
+              }, 20000);
+             
+            }
+            
+          }
+            > <Addresspage message={"DELIVERY"}/></Button>
               </Center>
             </Container>
           </ModalFooter>

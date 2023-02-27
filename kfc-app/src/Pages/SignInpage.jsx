@@ -13,12 +13,15 @@ import {
     Heading,
     Text,
     useColorModeValue,
-    Container,Center
+    Container,Center,useToast 
   } from '@chakra-ui/react';
-import { useState,useContext } from "react";
+import { useState,useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { Authenticator } from "../context/Authentication";
+
+
+
 
   
   export default function SignInpage() {
@@ -26,9 +29,11 @@ const [validateCred,setValidateCred]= useState({email:"",password:""})
 const [error, setError] = useState("");
 const navigate=useNavigate()
 const {isAuth,setIsAuth} =useContext(Authenticator)
+const [showError,setShowError] =useState(false)
+
 
 let existingUserDetails=JSON.parse(localStorage.getItem("userSignUpDetails"))
-
+const toast = useToast()
 console.log(existingUserDetails)
 const handleOnChange=(e)=>{
   setValidateCred({
@@ -38,7 +43,10 @@ const handleOnChange=(e)=>{
 }
 console.log(validateCred)
 const handleLogin=()=>{
-if(existingUserDetails[0].email!==validateCred.email){
+  if(localStorage.getItem("existingUserDetails")==null){
+setShowError(true)
+  }
+else if(existingUserDetails[0].email!==validateCred.email){
 setError("Incorrect Email")
 }else if(existingUserDetails[0].password!==validateCred.password){
   setError("Incorrect password")
@@ -56,6 +64,25 @@ axios.post(`https://63fb3a3c2027a45d8d628234.mockapi.io/UserSCredentials`, exist
 setIsAuth(!isAuth)
 navigate("/menu")});
 }}
+
+
+useEffect(()=>{
+if(showError){
+  toast({
+    title: 'Create Account.',
+    description: "Please Be member of FFF family by creating a account",
+    status: 'error',
+    duration: 3000,
+    isClosable: true,
+  })
+
+  setTimeout(()=>{
+    navigate("/signuppage")
+  },1000)
+}
+},[showError])
+
+
 const {email,password}=validateCred
    return (
       <Container  bg={useColorModeValue("#f8f7f5")} maxW="100%">
