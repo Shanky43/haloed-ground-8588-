@@ -489,3 +489,77 @@ function pushData(){
     }
 
   },[pass])*/ */
+
+
+
+  // --------------------------------READ ME---------------------------
+  /*
+  <!-- # haloed-ground-8588- -->
+# KFC clone ( Individual Project )
+
+# https://fff-gilt.vercel.app/
+
+KFC is a global chicken restaurant brand with a rich, decades-long history of success and innovation. It all started with one cook, Colonel Harland Sanders, who created a finger lickin' good recipe more than 75 years ago
+
+## Deployed link of project
+- <a href="https://fff-gilt.vercel.app/">KFC (Clone)</a>
+
+## 🛠 Tech Stack
+
+- React
+- Chakra-UI
+- Boothstrap
+- Material UI
+- CSS
+- backend (vercel)
+
+## Functionality
+
+- Login  ( E-mail: "eve.holt@reqres.in" && Password: "citysilica" )
+- Authentication
+- Add to cart
+- Menu page
+- Checkout
+- Sign In page
+- Sign Out page
+- Account Page
+
+## Website flow for User
+
+- Home page
+
+- Category wise products
+
+- Menu page(List of all the Items)
+
+- Cart page
+
+- Address page
+
+- Account page
+
+
+
+
+    
+#### Hard Coded Card details for payment section
+
+- COD / DELIVERY
+
+#### Website Presentation :
+![KFC-webite]()
+
+![KFC-webite]()
+
+![KFC-webite]()
+
+![KFC-webite]()
+
+![KFC-webite]()
+
+
+## Thank you note
+Thank you all who is giving precious time to visit my little creative project which is made with lot of efforts.
+
+_<p align="center"><sub>- Readme file designed by <a href="https://github.com/Shanky43">SHANKAR S</a> -</sub></p>_
+  */ */
