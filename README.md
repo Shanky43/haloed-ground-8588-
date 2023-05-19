@@ -61,4 +61,4 @@ KFC is a global chicken restaurant brand with a rich, decades-long history of su
 ## Thank you note
 Thank you all who is giving precious time to visit my little creative project which is made with lot of efforts.
 
-_<p align="center"><sub>- Readme file designed by <a href="https://github.com/iesparag">Parag Jain</a> -</sub></p>_
+_<p align="center"><sub>- Readme file designed by <a href="https://github.com/shanky43">Shankar S</a> -</sub></p>_
