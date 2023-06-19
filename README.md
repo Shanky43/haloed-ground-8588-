@@ -13,7 +13,6 @@ Experience the ultimate fried feast with a widely recognized website, featuring 
 - React
 - Chakra-UI
 - React-Redux
-- Material UI
 - CSS
 - Backend (vercel)
 
