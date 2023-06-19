@@ -3,7 +3,7 @@
 
 # https://fff-shanky43.vercel.app/
 
-KFC is a global chicken restaurant brand with a rich, decades-long history of success and innovation. It all started with one cook, Colonel Harland Sanders, who created a finger lickin' good recipe more than 75 years ago
+Indulge in a renowned fried feast experience with a well-known website that offers a wide selection of mouthwatering chicken and delectable sides.
 
 ## Deployed link of project
 - <a href="https://fff-shanky43.vercel.app/">KFC (Clone)</a>
