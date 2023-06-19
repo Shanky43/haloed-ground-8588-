@@ -3,7 +3,7 @@
 
 # https://fff-shanky43.vercel.app/
 
-Indulge in a renowned fried feast experience with a well-known website that offers a wide selection of mouthwatering chicken and delectable sides.
+Experience the ultimate fried feast with a widely recognized website, featuring a vast array of succulent chicken, flavorful sides, and a taste that rivals a famous fast-food chain's offerings.
 
 ## Deployed link of project
 - <a href="https://fff-shanky43.vercel.app/">KFC (Clone)</a>
